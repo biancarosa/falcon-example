@@ -8,4 +8,4 @@
 4. Install requirements (`pip install -r requirements.txt`)
 
 ## Running
-1. `gunicorn app:api`
+1. `gunicorn --pythonpath api app:api`
