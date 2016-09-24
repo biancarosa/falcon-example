@@ -2,6 +2,7 @@
 import falcon
 import json
 import middlewares
+from hooks import auth
 
 class SongsResource:
     def on_get(self, req, resp):
@@ -16,6 +17,8 @@ class SongsResource:
         resp.body = json.dumps(songs)
 
 class SongResource:
+
+    @falcon.before(auth.authorize())
     def on_get(self, req, resp):
         song = {
             "title": "Your Song", "artist": "Elton John"
